@@ -27,7 +27,7 @@ export default {
       data.append("title", this.form.title)
       data.append("content", this.form.content)
       this.$http
-        .post("http://127.0.0.1:8082/posts/new",data)
+        .post("http://139.180.194.174:8082/posts/new",data)
         .then(function(response) {
           console.log(response.data);
         })

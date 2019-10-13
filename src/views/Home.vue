@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     load() {
-      this.$http.get("http://127.0.0.1:8082/posts")
+      this.$http.get("http://139.180.194.174:8082/posts")
     .then((res)=>{
       this.posts = res.data.posts
     })

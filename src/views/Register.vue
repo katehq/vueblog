@@ -32,7 +32,7 @@ export default {
       data.append("password", this.form.password)
       data.append("password_once", this.form.password_once)
       this.$http
-        .post("http://127.0.0.1:8082/users",data)
+        .post("http://139.180.194.174:8082/users",data)
         .then(function(response) {
           console.log(response.data);
         })

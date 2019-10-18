@@ -4,7 +4,7 @@
       <el-input v-model="form.title"></el-input>
     </el-form-item>
     <el-form-item label="Content">
-      <el-input type="textarea" v-model="form.content"></el-input>
+      <el-input type="textarea" rows="10" v-model="form.content"></el-input>
     </el-form-item>
     <el-button v-on:click="handlesubmit">Default</el-button>
   </el-form>
@@ -16,20 +16,25 @@ export default {
     return {
       labelPosition: "top",
       form: {
-        title:'',
-        content:''
+        title: "",
+        content: ""
       }
     };
   },
   methods: {
     handlesubmit() {
-      var data = new FormData()
-      data.append("title", this.form.title)
-      data.append("content", this.form.content)
+      var data = new FormData();
+      data.append("title", this.form.title);
+      data.append("content", this.form.content);
       this.$http
-        .post("http://139.180.194.174:8082/posts/new",data)
-        .then(function(response) {
+        .post("http://127.0.0.1:8082/posts/new", data)
+        .then(response => {
           console.log(response.data);
+          this.$notify({
+            title: "发布成功",
+            message: `你可以取主页看看啦`,
+            type: "success"
+          });
         })
         .catch(function(error) {
           console.log(error);

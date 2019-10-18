@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <div class="content">
     <el-row>
       <el-col :xs="0" :lg="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content">
           <el-tag>
             <el-link href="https://twitter.com/luowanshun" :underline="false">Twitter</el-link>
           </el-tag>
@@ -12,13 +12,13 @@
         </div>
       </el-col>
       <el-col :lg="12" :md="24" :xs="24">
-        <div class="grid-content bg-purple-light">
-          <div v-for="post in posts" :key="post.ID">
-            <el-card class="box-card" @click.native="gopost(post)">
-              <p>{{post.title}}</p>
-              <span class="postime">{{post.time}} views: {{post.views}}</span>
-            </el-card>
+        <div class="grid-content">
+          <h2 id="title">{{title}}</h2>
+          <div id="info">
+            <span id="postime">{{time}}</span>
+            <span id="views">views: {{views}}</span>
           </div>
+          <div v-html="content"></div>
         </div>
       </el-col>
       <el-col :lg="6" :xs="0">
@@ -30,21 +30,22 @@
 
 <script>
 export default {
-  name: "home",
   data() {
     return {
-      posts: "james",
-      love: "iiuj"
+      title: "",
+      content: "",
+      time: "",
+      views: ""
     };
   },
   methods: {
     load() {
-      this.$http.get("/posts").then(res => {
-        this.posts = res.data.posts;
+      this.$http.get("/post/" + this.$route.params.id).then(res => {
+        this.title = res.data.post.title;
+        this.content = res.data.post.content;
+        this.time = res.data.post.time;
+        this.views = res.data.post.views;
       });
-    },
-    gopost(post) {
-      this.$router.push({ name: "postid", params: { id: post.ID } });
     }
   },
   beforeMount() {
@@ -54,8 +55,23 @@ export default {
 </script>
 
 <style>
-.postime {
+#title {
+  margin-left: 10px;
+}
+
+#postime,
+#views {
   font-size: 10px;
   color: grey;
+  margin-right: 3px;
+}
+
+#info {
+  margin-left: 3px;
+}
+
+img {
+  width: 95%;
+  margin: 5px auto;
 }
 </style>

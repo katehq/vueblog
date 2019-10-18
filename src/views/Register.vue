@@ -27,12 +27,12 @@ export default {
   methods: {
     handlesubmit() {
       console.log(this.form.name);
-      var data = new FormData()
-      data.append("name", this.form.name)
-      data.append("password", this.form.password)
-      data.append("password_once", this.form.password_once)
+      var data = new FormData();
+      data.append("name", this.form.name);
+      data.append("password", this.form.password);
+      data.append("password_once", this.form.password_once);
       this.$http
-        .post("http://139.180.194.174:8082/users",data)
+        .post("/users", data)
         .then(function(response) {
           console.log(response.data);
         })

@@ -1,25 +1,23 @@
 <template>
-<div>
-    hello
-</div>
+  <div>hello</div>
 </template>
 
 <script>
 export default {
-  name:"home",
+  name: "home",
   data() {
     return {
       posts: "james",
-      love: 'iiuj'
-    }
+      love: "iiuj"
+    };
   },
   methods: {
     load() {
-        console.log(this.posts)
+      console.log(this.posts);
     }
   },
-  beforeMount(){
-    this.load()
+  beforeMount() {
+    this.load();
   }
-}
+};
 </script>

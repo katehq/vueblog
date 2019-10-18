@@ -45,5 +45,30 @@ export default new Router({
       //fadfs
       component: () => import('./views/Posts.vue')
     },
+
+    {
+      path: '/posts/:id',
+      name: 'postid',
+      // sfafsafa
+      ///aff
+      //fadfs
+      component: () => import('./views/Post.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      // sfafsafa
+      ///aff
+      //fadfs
+      component: () => import('./views/Login.vue')
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      // sfafsafa
+      ///aff
+      //fadfs
+      component: () => import('./views/Logout.vue')
+    },
   ]
 })
